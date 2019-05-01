@@ -18,6 +18,13 @@ Utiliser docker-compose pour lancer les services.
 Pour arreter les containers
 `docker-compose down`
 
+# bank-ui
+
+Lien github : https://github.com/langston8182/bank-ui
+
+Pour lancer la ui, récupérer l'image sur docker hub\
+`docker run -d -p 3000:3000 --name bank-ui langston8182/bank-ui:1.0.0-SNAPSHOT`
+
 # Contributeur
 
 Cyril Marchive (cyril.marchive@gmail.com)
