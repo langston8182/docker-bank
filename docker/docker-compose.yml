@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: bank
+      MYSQL_USER: spring
+      MYSQL_PASSWORD: spring
+    ports:
+      - 3307:3306
+    networks:
+      - net
+
+  service-utilisateur:
+    image: langston8182/service-utilisateur:1.0.0-SNAPSHOT
+    container_name: service-utilisateur
+    ports:
+      - 8100:8100
+    networks:
+      - net
+
+  authorization:
+    image: langston8182/bank-oauth2-authorization-server:1.0.0-SNAPSHOT
+    container_name: authorization
+    ports:
+      - 8090:8090
+    networks:
+      - net
+    depends_on:
+      - db
+
+networks:
+  net:
+    driver: bridge
