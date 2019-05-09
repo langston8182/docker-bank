@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-  db:
+  db-service:
     image: mariadb
     container_name: mariadb
     environment:
@@ -14,7 +14,7 @@ services:
     networks:
       - net
 
-  service-utilisateur:
+  utilisateur-service:
     image: langston8182/service-utilisateur:1.0.0-SNAPSHOT
     container_name: service-utilisateur
     ports:
@@ -22,7 +22,7 @@ services:
     networks:
       - net
 
-  authorization:
+  authorization-service:
     image: langston8182/bank-oauth2-authorization-server:1.0.0-SNAPSHOT
     container_name: authorization
     ports:
@@ -30,7 +30,7 @@ services:
     networks:
       - net
     depends_on:
-      - db
+      - db-service
 
 networks:
   net:
